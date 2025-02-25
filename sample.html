@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Career Page</title>
+	<style>
+		body 
+		{
+			font-family: Arial, sans-serif;
+		}
+		header 
+		{
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 9999;
+		}
+		h1 {
+			margin: 0;
+			text-align: center;
+		}
+		main {
+			margin-top: 80px;
+			padding: 20px;
+		}
+		h2 {
+			margin-top: 30px;
+		}
+		ul {
+			margin-left: 30px;
+		}
+		button {
+			background-color: #333;
+			color: #fff;
+			border: none;
+			padding: 10px;
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			margin: 20px;
+			cursor: pointer;
+			display: none;
+		}
+        .view-certificate-btn {
+            background-color: #085fbd;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+          }
+          
+          .view-certificate-btn:hover {
+            background-color: #0069d9;
+          }
+          
+	</style>
+</head>
+<body>
+	<header>
+		<h1>My Career Page</h1>
+	</header>
+	<main>
+		<div class="education-section">
+            <h2>Schools</h2>
+            <div class="school">
+              <h3>Elementary School</h3>
+              <p>Some description about your elementary school</p>
+              <button class="view-certificate-btn" data-link="https://www.example.com/elementary-school-certificate.pdf">View My Certificate</button>
+            </div>
+            <div class="school">
+              <h3>Middle School</h3>
+              <p>Some description about your middle school</p>
+              <button class="view-certificate-btn" data-link="https://www.example.com/middle-school-certificate.pdf">View My Certificate</button>
+            </div>
+            <div class="school">
+              <h3>High School</h3>
+              <p>Some description about your high school</p>
+              <button class="view-certificate-btn" data-link="https://www.example.com/high-school-certificate.pdf">View My Certificate</button>
+            </div>
+          </div>
+          
+          <div class="education-section">
+            <h2>Graduation</h2>
+            <div class="graduation">
+              <h3>College</h3>
+              <p>Some description about your college</p>
+              <button class="view-certificate-btn" data-link="https://www.example.com/college-certificate.pdf">View My Certificate</button>
+            </div>
+          </div>
+          
+	</main>
+	<button id="copy-button">Copy</button>
+	<footer>
+		<p>Copyright © 2023</p>
+	</footer>
+	<script>
+		// Copy button functionality
+		const copyButton = document.getElementById('copy-button');
+		copyButton.addEventListener('click', function() {
+			const educationList = document.querySelector('ul');
+			const range = document.createRange();
+			range.selectNode(educationList);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand('copy');
+			window.getSelection().removeAllRanges();
+			copyButton.innerText = 'Copied!';
+			setTimeout(function() {
+				copyButton.innerText = 'Copy';
+			}, 2000);
+		});
+
+		// Hide footer on scroll
+		let prevScrollPos = window.pageYOffset;
+		window.onscroll = function() {
+			const currentScrollPos = window.pageYOffset;
+			if (prevScrollPos > currentScrollPos) {
+				document.querySelector('footer').style.bottom = '0';
+				copyButton.style.display = 'none';
+			} else {
+				document.querySelector('footer').style.bottom = '-50px';
+				copyButton.style.display = 'block';
+			}
+			prevScrollPos = currentScrollPos;
+		};
+	</script>
+    <script>const certificateButtons = document.querySelectorAll('.view-certificate-btn');
+
+        certificateButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const link = button.dataset.link;
+            window.open(link, '_blank');
+          });
+        });
+        </script>
+</body>
+</html>
