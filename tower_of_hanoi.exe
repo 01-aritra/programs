@@ -1,0 +1,20 @@
+       tower of hanoi
+
+              
+       a=auxaliary s=              d=          
+
+       i. (n-1) number of discs from s to a using d.
+      ii. nth disk is moved from s to d.
+     iii. (n-1) no. of disks from a to d using s.   
+
+
+
+     ROUGH CODE:
+     void toh(int n,char s , char d,char a)
+     {
+        if (n>1)
+        toh(n-1,s,d,a);
+        printf("%d th disk is moved from %c to %c",n,s,d);
+        if(n-1)
+        toh(n-1,a,s,d);
+     }

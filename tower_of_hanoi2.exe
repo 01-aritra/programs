@@ -1,0 +1,45 @@
+The Tower of Hanoi is a classic puzzle game that was invented by Edouard Lucas in 1883. The game consists of three rods and a number of disks of different sizes, which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape.
+
+The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules:
+
+Only one disk can be moved at a time.
+Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
+A disk may only be placed on top of a larger disk or an empty rod.
+The Tower of Hanoi puzzle is usually played with three rods and a varying number of disks, but can also be played with more rods or more disks. The standard puzzle has three rods and three disks. The game can be played with more disks, making it more challenging.
+
+The puzzle is often used as a problem-solving exercise to teach concepts such as recursion, algorithmic thinking, and problem-solving strategies. It has applications in computer science, mathematics, and other fields. There are also many variations and adaptations of the Tower of Hanoi puzzle, including digital versions, and it remains a popular brain-teasing game to this day.
+
+
+full code: in int
+#include <stdio.h>
+
+
+void tow(int n,int s,int a,int t)  
+// n = no.of tower
+// s = source of the disc
+// a = auxaliary disc
+// t = target disc
+{
+  if (n > 0) {
+        // Move n-1 disks from source to auxiliary peg
+        tow(n - 1, s, t, a);
+
+        // Move the nth disk from source to target peg
+        printf("Move disk %d from %d to %d\n", n, s, t);
+
+        // Move the n-1 disks from auxiliary to target peg
+        tow(n - 1, a, s, t);
+    }
+}
+int main()
+{
+    int n,s,a,t;
+    printf("Enter no of tower");
+    scanf("%d",&n);
+    printf("Enter source auxaliary and target respectively");
+    scanf("%d %d %d",&s, &a , &t);
+    printf("Tower of Hanoi with %d disks:\n", n);
+    tow(n, s, a, t);
+
+    return 0;
+}
